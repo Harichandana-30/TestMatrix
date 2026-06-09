@@ -82,10 +82,13 @@ int choice = scanner.nextInt();
 ExamService examService =
         new ExamService();
 
+int studentId =
+        result.getInt("student_id");
+
 switch (choice) {
 
     case 1:
-        examService.startExam();
+        examService.startExam(studentId);
         break;
 
     default:

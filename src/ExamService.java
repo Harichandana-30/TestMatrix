@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ExamService {
 
-    public void startExam() {
+    public void startExam(int studentId) {
 
         try {
 
@@ -99,6 +99,19 @@ public class ExamService {
 
             System.out.println(
                     "Your Score: " + score);
+                    String saveQuery =
+        "INSERT INTO results(student_id, score) VALUES(?,?)";
+
+var savePst =
+        connection.prepareStatement(saveQuery);
+
+savePst.setInt(1, studentId);
+savePst.setInt(2, score);
+
+savePst.executeUpdate();
+
+System.out.println(
+        "Result Saved Successfully!");
 
         } catch (Exception e) {
 
