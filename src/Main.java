@@ -8,6 +8,8 @@ public class Main {
 
         StudentService studentService =
                 new StudentService();
+        AdminService adminService =
+                new AdminService();
 
         System.out.println("=================================");
         System.out.println("       Welcome to TestMatrix");
@@ -15,6 +17,7 @@ public class Main {
 
         System.out.println("1. Register Student");
         System.out.println("2. Login Student");
+        System.out.println("3. Admin Login");
         System.out.print("Enter Choice: ");
 
         int choice = scanner.nextInt();
@@ -27,6 +30,10 @@ public class Main {
 
     case 2:
         studentService.loginStudent();
+        break;
+
+    case 3:
+        adminService.adminLogin();
         break;
 
     default:
