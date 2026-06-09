@@ -37,6 +37,7 @@ public class AdminService {
         System.out.println("\n===== Admin Menu =====");
         System.out.println("1. Add Question");
         System.out.println("2. View Questions");
+        System.out.println("3. Delete Question");
         System.out.print("Enter Choice: ");
 
         int choice = scanner.nextInt();
@@ -49,6 +50,10 @@ public class AdminService {
 
     case 2:
         viewQuestions();
+        break;
+
+    case 3:
+        deleteQuestion();
         break;
 
     default:
@@ -154,6 +159,41 @@ public class AdminService {
     } catch (Exception e) {
 
         System.out.println("Failed to View Questions!");
+        e.printStackTrace();
+    }
+}
+public void deleteQuestion() {
+
+    try {
+
+        System.out.print("Enter Question ID to Delete: ");
+        int questionId = scanner.nextInt();
+
+        Connection connection =
+                DBConnection.getConnection();
+
+        String query =
+                "DELETE FROM questions WHERE question_id=?";
+
+        var pst =
+                connection.prepareStatement(query);
+
+        pst.setInt(1, questionId);
+
+        int rows = pst.executeUpdate();
+
+        if (rows > 0) {
+
+            System.out.println("Question Deleted Successfully!");
+
+        } else {
+
+            System.out.println("Question ID Not Found!");
+        }
+
+    } catch (Exception e) {
+
+        System.out.println("Failed to Delete Question!");
         e.printStackTrace();
     }
 }
