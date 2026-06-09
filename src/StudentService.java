@@ -71,8 +71,26 @@ public class StudentService {
         if (result.next()) {
 
             System.out.println("Login Successful!");
-            System.out.println("Welcome " +
-                    result.getString("name"));
+System.out.println("Welcome " +
+        result.getString("name"));
+
+System.out.println("\n1. Start Exam");
+System.out.print("Enter Choice: ");
+
+int choice = scanner.nextInt();
+
+ExamService examService =
+        new ExamService();
+
+switch (choice) {
+
+    case 1:
+        examService.startExam();
+        break;
+
+    default:
+        System.out.println("Invalid Choice");
+}
 
         } else {
 
