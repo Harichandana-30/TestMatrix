@@ -92,18 +92,25 @@ public class StudentLoginUI extends JFrame {
 
                 var result =
                         pst.executeQuery();
+if (result.next()) {
 
-                if (result.next()) {
+    JOptionPane.showMessageDialog(
+            this,
+            "Login Successful!");
 
-                    JOptionPane.showMessageDialog(
-                            this,
-                            "Login Successful!");
+    int studentId =
+            result.getInt("student_id");
 
-                    new ExamUI();
+    String studentName =
+            result.getString("name");
 
-                    dispose();
+    new ExamUI(
+            studentId,
+            studentName);
 
-                } else {
+    dispose();
+
+}else {
 
                     JOptionPane.showMessageDialog(
                             this,
