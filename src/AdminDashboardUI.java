@@ -21,8 +21,12 @@ public class AdminDashboardUI extends JFrame {
 
         JButton addQuestion=new JButton("Add Question");
         JButton viewQuestions=new JButton("View Questions");
+        viewQuestions.addActionListener(
+        e -> new QuestionTableUI());
         JButton deleteQuestion=new JButton("Delete Question");
         JButton viewResults=new JButton("View Results");
+        viewResults.addActionListener(
+        e -> new ViewResultsUI());
 
         addQuestion.setBounds(180,110,300,45);
         viewQuestions.setBounds(180,180,300,45);
