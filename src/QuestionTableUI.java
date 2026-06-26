@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.Connection;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class QuestionTableUI extends JFrame {
 
@@ -12,6 +13,7 @@ public class QuestionTableUI extends JFrame {
     public QuestionTableUI() {
 
         setTitle("Question Management");
+        ImageIcon icon = new ImageIcon("./resources/logo.png");
 
         setSize(1000,550);
 
@@ -54,9 +56,47 @@ public class QuestionTableUI extends JFrame {
 
         table=
                 new JTable(model);
+                table.setRowHeight(35);
+
+table.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+
+table.setSelectionBackground(new Color(98, 0, 238));
+
+table.setSelectionForeground(Color.WHITE);
+
+table.setGridColor(new Color(210,210,210));
+
+table.setShowGrid(true);
 
         JScrollPane scroll=
                 new JScrollPane(table);
+                table.getTableHeader().setFont(
+        new Font(
+                "Segoe UI",
+                Font.BOLD,
+                16));
+
+table.getTableHeader().setBackground(
+        new Color(70,70,150));
+
+table.getTableHeader().setForeground(
+        Color.WHITE);
+
+table.getTableHeader().setReorderingAllowed(false);
+        DefaultTableCellRenderer center =
+        new DefaultTableCellRenderer();
+
+center.setHorizontalAlignment(
+        SwingConstants.CENTER);
+
+table.getColumnModel()
+     .getColumn(0)
+     .setCellRenderer(center);
+table.getColumnModel().getColumn(0).setPreferredWidth(60);
+
+table.getColumnModel().getColumn(1).setPreferredWidth(350);
+
+table.getColumnModel().getColumn(6).setPreferredWidth(120);
 
         panel.add(
                 scroll,
@@ -111,8 +151,10 @@ public class QuestionTableUI extends JFrame {
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(
-                    this,
-                    "Question Deleted Successfully!");
+        this,
+        "Question Deleted!!",
+        "Success",
+        JOptionPane.INFORMATION_MESSAGE);
 
             loadQuestions();
 

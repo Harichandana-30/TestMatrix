@@ -1,7 +1,9 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.Connection;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class StudentHistoryUI extends JFrame {
 
@@ -15,6 +17,7 @@ public class StudentHistoryUI extends JFrame {
         this.studentId = studentId;
 
         setTitle("My Exam History");
+        ImageIcon icon = new ImageIcon("./resources/logo.png");
 
         setSize(700,450);
 
@@ -47,11 +50,45 @@ public class StudentHistoryUI extends JFrame {
         model.addColumn("Exam Date");
 
         table = new JTable(model);
+        table.setRowHeight(35);
+
+table.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+
+table.setSelectionBackground(new Color(98,0,238));
+
+table.setSelectionForeground(Color.WHITE);
+
+table.setGridColor(new Color(210,210,210));
+
+table.setShowGrid(true);
 
         table.setRowHeight(28);
 
         JScrollPane scroll =
                 new JScrollPane(table);
+                table.getTableHeader().setFont(
+        new Font(
+                "Segoe UI",
+                Font.BOLD,
+                16));
+
+table.getTableHeader().setBackground(
+        new Color(70,70,150));
+
+table.getTableHeader().setForeground(
+        Color.WHITE);
+
+table.getTableHeader().setReorderingAllowed(false);
+DefaultTableCellRenderer center =
+        new DefaultTableCellRenderer();
+
+center.setHorizontalAlignment(
+        SwingConstants.CENTER);
+
+table.getColumnModel().getColumn(0).setCellRenderer(center);
+table.getColumnModel().getColumn(0).setPreferredWidth(80);
+
+table.getColumnModel().getColumn(1).setPreferredWidth(220);
 
         panel.add(scroll, BorderLayout.CENTER);
 

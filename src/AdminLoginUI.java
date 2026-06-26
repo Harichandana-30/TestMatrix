@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminLoginUI extends JFrame {
 
     public AdminLoginUI() {
 
         setTitle("Admin Login");
+        ImageIcon icon = new ImageIcon("./resources/logo.png");
         setSize(500,420);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

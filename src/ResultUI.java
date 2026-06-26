@@ -11,6 +11,7 @@ int studentId;
                 int totalQuestions){
 this.studentId = studentId;
         setTitle("Exam Result");
+        ImageIcon icon = new ImageIcon("./resources/logo.png");
 
         setSize(500,500);
 
@@ -226,6 +227,17 @@ exit.addActionListener(e -> {
 
        panel.add(home);
        panel.add(exit);
+       UIUtils.addHoverEffect(
+        home,
+        new Color(52,152,219),
+        new Color(41,128,185));
+
+UIUtils.addHoverEffect(
+        exit,
+        new Color(231,76,60),
+        new Color(192,57,43));
+
+
 
         add(panel);
 

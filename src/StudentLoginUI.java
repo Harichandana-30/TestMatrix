@@ -1,137 +1,298 @@
 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
 
 public class StudentLoginUI extends JFrame {
 
-    public StudentLoginUI() {
+        public StudentLoginUI() {
 
-        setTitle("Student Login");
-        setSize(500, 400);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                setTitle("Student Login");
 
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        panel.setBackground(
-                new Color(25, 25, 35));
+                ImageIcon icon = new ImageIcon("./resources/logo.png");
 
-        JLabel title =
-                new JLabel(
-                        "Student Login");
+                setIconImage(icon.getImage());
 
-        title.setBounds(
-                150, 30, 250, 40);
+                setSize(900, 650);
 
-        title.setForeground(
-                Color.WHITE);
+                setLocationRelativeTo(null);
 
-        title.setFont(
-                new Font(
-                        "Arial",
-                        Font.BOLD,
-                        28));
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JLabel emailLabel =
-                new JLabel("Email");
+                setResizable(false);
 
-        emailLabel.setBounds(
-                70, 100, 100, 30);
+                JPanel background = new JPanel(null);
 
-        emailLabel.setForeground(
-                Color.WHITE);
+                background.setBackground(
+                                new Color(8, 8, 20));
 
-        JTextField emailField =
-                new JTextField();
+                JPanel card = new JPanel(null);
 
-        emailField.setBounds(
-                70, 130, 330, 35);
+                card.setBounds(225, 70, 450, 480);
 
-        JLabel passwordLabel =
-                new JLabel("Password");
+                card.setBackground(
+                                new Color(20, 20, 38));
 
-        passwordLabel.setBounds(
-                70, 180, 100, 30);
+                card.setBorder(
+                                BorderFactory.createCompoundBorder(
 
-        passwordLabel.setForeground(
-                Color.WHITE);
+                                                new LineBorder(
+                                                                new Color(180, 0, 255),
+                                                                2,
+                                                                true),
 
-        JPasswordField passwordField =
-                new JPasswordField();
+                                                new EmptyBorder(
+                                                                20, 20, 20, 20)));
 
-        passwordField.setBounds(
-                70, 210, 330, 35);
+                JLabel title = new JLabel("👨‍🎓 Student Login");
 
-        JButton loginButton =
-                new JButton("Login");
+                title.setBounds(
+                                70,
+                                30,
+                                320,
+                                40);
 
-        loginButton.setBounds(
-                150, 290, 180, 40);
+                title.setHorizontalAlignment(
+                                SwingConstants.CENTER);
 
-        loginButton.addActionListener(e -> {
+                title.setForeground(
+                                new Color(215, 110, 255));
 
-            try {
+                title.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.BOLD,
+                                                30));
 
-                String email =
-                        emailField.getText();
+                JLabel subtitle = new JLabel("Welcome Back!");
 
-                String password =
-                        new String(
-                                passwordField.getPassword());
+                subtitle.setBounds(
+                                100,
+                                75,
+                                250,
+                                25);
 
-                var connection =
-                        DBConnection.getConnection();
+                subtitle.setHorizontalAlignment(
+                                SwingConstants.CENTER);
 
-                String query =
-                        "SELECT * FROM students WHERE email=? AND password=?";
+                subtitle.setForeground(
+                                Color.LIGHT_GRAY);
 
-                var pst =
-                        connection.prepareStatement(query);
+                subtitle.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.PLAIN,
+                                                17));
 
-                pst.setString(1, email);
-                pst.setString(2, password);
+                JLabel emailLabel = new JLabel("📧 Email");
 
-                var result =
-                        pst.executeQuery();
-if (result.next()) {
+                emailLabel.setBounds(
+                                55,
+                                130,
+                                200,
+                                25);
 
-    JOptionPane.showMessageDialog(
-            this,
-            "Login Successful!");
+                emailLabel.setForeground(
+                                Color.WHITE);
 
-    int studentId =
-            result.getInt("student_id");
+                emailLabel.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.BOLD,
+                                                16));
 
-    String studentName =
-            result.getString("name");
+                JTextField emailField = new JTextField();
 
-    new ExamUI(
-            studentId,
-            studentName);
+                emailField.setBounds(
+                                55,
+                                160,
+                                340,
+                                42);
 
-    dispose();
+                emailField.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.PLAIN,
+                                                16));
 
-}else {
+                emailField.setBorder(
+                                BorderFactory.createLineBorder(
+                                                new Color(160, 90, 255),
+                                                2));
 
-                    JOptionPane.showMessageDialog(
-                            this,
-                            "Invalid Email or Password!");
-                }
+                JLabel passwordLabel = new JLabel("🔒 Password");
 
-            } catch (Exception ex) {
+                passwordLabel.setBounds(
+                                55,
+                                225,
+                                200,
+                                25);
 
-                ex.printStackTrace();
-            }
-        });
+                passwordLabel.setForeground(
+                                Color.WHITE);
 
-        panel.add(title);
-        panel.add(emailLabel);
-        panel.add(emailField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(loginButton);
+                passwordLabel.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.BOLD,
+                                                16));
 
-        add(panel);
+                JPasswordField passwordField = new JPasswordField();
 
-        setVisible(true);
-    }
+                passwordField.setBounds(
+                                55,
+                                255,
+                                340,
+                                42);
+
+                passwordField.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.PLAIN,
+                                                16));
+
+                passwordField.setBorder(
+                                BorderFactory.createLineBorder(
+                                                new Color(160, 90, 255),
+                                                2));
+
+                JButton loginButton = new JButton("Login");
+
+                loginButton.setBounds(
+                                120,
+                                335,
+                                210,
+                                48);
+
+                loginButton.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.BOLD,
+                                                18));
+
+                JButton backButton = new JButton("← Back");
+
+                backButton.setBounds(
+                                120,
+                                400,
+                                210,
+                                42);
+
+                backButton.setFont(
+                                new Font(
+                                                "Segoe UI",
+                                                Font.BOLD,
+                                                16));
+                loginButton.addActionListener(e -> {
+
+                        try {
+
+                                String email = emailField.getText();
+
+                                String password = new String(
+                                                passwordField.getPassword());
+
+                                var connection = DBConnection.getConnection();
+
+                                String query = "SELECT * FROM students WHERE email=? AND password=?";
+
+                                var pst = connection.prepareStatement(query);
+
+                                pst.setString(1, email);
+
+                                pst.setString(2, password);
+
+                                var result = pst.executeQuery();
+
+                                if (result.next()) {
+
+                                        JOptionPane.showMessageDialog(
+                                                        this,
+                                                        "Login Successful!",
+                                                        "Success",
+                                                        JOptionPane.INFORMATION_MESSAGE);
+
+                                        int studentId = result.getInt("student_id");
+
+                                        String studentName = result.getString("name");
+
+                                        new StudentDashboardUI(
+                                                        studentId,
+                                                        studentName);
+
+                                        dispose();
+
+                                }
+
+                                else {
+
+                                        JOptionPane.showMessageDialog(
+                                                        this,
+                                                        "Invalid Email or Password!",
+                                                        "Login Failed",
+                                                        JOptionPane.ERROR_MESSAGE);
+
+                                }
+
+                        }
+
+                        catch (Exception ex) {
+
+                                ex.printStackTrace();
+
+                        }
+
+                });
+
+                backButton.addActionListener(e -> {
+
+                        new WelcomeUI();
+
+                        dispose();
+
+                });
+
+                UIUtils.addHoverEffect(
+                                loginButton,
+                                new Color(115, 0, 255),
+                                new Color(145, 40, 255));
+
+                UIUtils.addHoverEffect(
+                                backButton,
+                                new Color(70, 70, 90),
+                                new Color(95, 95, 120));
+
+                loginButton.setBackground(
+                                new Color(115, 0, 255));
+
+                loginButton.setForeground(Color.WHITE);
+
+                backButton.setBackground(
+                                new Color(70, 70, 90));
+
+                backButton.setForeground(Color.WHITE);
+
+                card.add(title);
+
+                card.add(subtitle);
+
+                card.add(emailLabel);
+
+                card.add(emailField);
+
+                card.add(passwordLabel);
+
+                card.add(passwordField);
+
+                card.add(loginButton);
+
+                card.add(backButton);
+
+                background.add(card);
+
+                add(background);
+
+                setVisible(true);
+
+        }
+
 }

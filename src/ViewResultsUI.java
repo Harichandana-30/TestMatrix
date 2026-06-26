@@ -1,6 +1,8 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class ViewResultsUI extends JFrame {
 
@@ -10,6 +12,7 @@ public class ViewResultsUI extends JFrame {
     public ViewResultsUI() {
 
         setTitle("Student Results");
+        ImageIcon icon = new ImageIcon("./resources/logo.png");
         setSize(850, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -32,11 +35,51 @@ public class ViewResultsUI extends JFrame {
         model.addColumn("Exam Date");
 
         table = new JTable(model);
+        table.setRowHeight(35);
+
+table.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+
+table.setSelectionBackground(new Color(98,0,238));
+
+table.setSelectionForeground(Color.WHITE);
+
+table.setGridColor(new Color(210,210,210));
+
+table.setShowGrid(true);
 
         table.setRowHeight(28);
         table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
 
         JScrollPane scrollPane = new JScrollPane(table);
+        table.getTableHeader().setFont(
+        new Font(
+                "Segoe UI",
+                Font.BOLD,
+                16));
+
+table.getTableHeader().setBackground(
+        new Color(70,70,150));
+
+table.getTableHeader().setForeground(
+        Color.WHITE);
+
+table.getTableHeader().setReorderingAllowed(false);
+DefaultTableCellRenderer center =
+        new DefaultTableCellRenderer();
+
+center.setHorizontalAlignment(
+        SwingConstants.CENTER);
+
+table.getColumnModel().getColumn(0).setCellRenderer(center);
+
+table.getColumnModel().getColumn(3).setCellRenderer(center);
+table.getColumnModel().getColumn(0).setPreferredWidth(70);
+
+table.getColumnModel().getColumn(1).setPreferredWidth(160);
+
+table.getColumnModel().getColumn(2).setPreferredWidth(220);
+
+table.getColumnModel().getColumn(3).setPreferredWidth(80);
 
         panel.add(scrollPane, BorderLayout.CENTER);
 

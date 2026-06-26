@@ -7,6 +7,8 @@ public class WelcomeUI extends JFrame {
     public WelcomeUI() {
 
         setTitle("TestMatrix");
+      ImageIcon icon = new ImageIcon("./resources/logo.png");
+        setIconImage(icon.getImage());
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -157,6 +159,26 @@ card.add(rightLine);
         card.add(register);
         card.add(adminLogin);
         card.add(exit);
+        UIUtils.addHoverEffect(
+        studentLogin,
+        new Color(115, 0, 255),
+        new Color(140, 40, 255));
+
+UIUtils.addHoverEffect(
+        register,
+        new Color(115, 0, 255),
+        new Color(140, 40, 255));
+
+UIUtils.addHoverEffect(
+        adminLogin,
+        new Color(115, 0, 255),
+        new Color(140, 40, 255));
+
+UIUtils.addHoverEffect(
+        exit,
+        new Color(190, 0, 120),
+        new Color(220, 30, 150));
+
 
         background.add(card);
 

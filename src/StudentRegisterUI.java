@@ -7,6 +7,7 @@ public class StudentRegisterUI extends JFrame {
     public StudentRegisterUI() {
 
         setTitle("Student Registration");
+        ImageIcon icon = new ImageIcon("./resources/logo.png");
         setSize(500, 550);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,17 +70,20 @@ public class StudentRegisterUI extends JFrame {
                 pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(
-                        this,
-                        "Registration Successful!");
+        this,
+        "Registration Successful!",
+        "Success",
+        JOptionPane.INFORMATION_MESSAGE);
 
                 dispose();
 
             }
             catch(Exception ex){
-
                 JOptionPane.showMessageDialog(
-                        this,
-                        "Registration Failed!");
+        this,
+        "Invalid Email or Password!",
+        "Registration Failed",
+        JOptionPane.ERROR_MESSAGE);
 
                 ex.printStackTrace();
             }
@@ -94,6 +98,10 @@ public class StudentRegisterUI extends JFrame {
         panel.add(passwordLabel);
         panel.add(passwordField);
         panel.add(registerButton);
+        UIUtils.addHoverEffect(
+        registerButton,
+        new Color(46,204,113),
+        new Color(39,174,96));
 
         add(panel);
         setVisible(true);

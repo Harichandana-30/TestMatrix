@@ -50,6 +50,7 @@ int timeRemaining = 20 * 60; // 20 minutes
     this.studentName = studentName;
 
     setTitle("TestMatrix Examination");
+    ImageIcon icon = new ImageIcon("./resources/logo.png");
 
     setSize(900,650);
 
